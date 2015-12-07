@@ -1,14 +1,14 @@
-public interface ReturnObject {
+class ReturnObjectImpl {
 	
 	private Object retObject;
 	private ErrorMessage errMessage;
 	
-	public ReturnObject(ErrorMessage errMessage){
+	public ReturnObjectImpl(ErrorMessage errMessage){
 		this.errMessage = errMessage;
 		this.retObject = null;
 	}
 	
-	public ReturnObject(Object retObject){
+	public ReturnObjectImpl(Object retObject){
 		this.retObject = retObject;
 		this.errMessage = ErrorMessage.NO_ERROR;
 	}
@@ -46,6 +46,6 @@ public interface ReturnObject {
 	 * @return the return value from the method or null if there has been an error
 	 */
 	public Object getReturnValue(){
-		this.retObject;
+		return this.retObject;
 	}
 }
