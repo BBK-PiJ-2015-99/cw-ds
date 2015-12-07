@@ -1,4 +1,4 @@
-class ReturnObjectImpl {
+public class ReturnObjectImpl implements ReturnObject {
 	
 	private Object retObject;
 	private ErrorMessage errMessage;
