@@ -29,8 +29,10 @@ class TestArrayListImpl {
         testArray.add("Will I fit?");
         if(testArray.size()!= 1000001)
             System.out.println("TestArrayListImpl-Failed: size()!=1000001 after adding element that expands list beyond default capacity");
-        System.out.println("Number of elements in array are: " + testArray.size());
-
+        //System.out.println("Number of elements in array are: " + testArray.size());
+        if(testArray.get(0).getReturnValue() != "Hello," && testArray.get(500000).getReturnValue() != "Element:500000" && testArray.get(testArray.size()).getReturnValue() != "Will I fit?")
+            System.out.println(testArray.get(500000).getReturnValue());    
+            System.out.println("TestArrayListImpl-Failed: get() not re11turning first, middle and last elements correctly");
     }
 
 }
