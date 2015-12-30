@@ -1,6 +1,7 @@
 class TestReturnObjectImpl {
 	public static void main(String[] input){
 		ReturnObjectImpl roVal = new ReturnObjectImpl("Test");
+        System.out.println("Starting tests for ReturnObjectImpl");
 		if(roVal.hasError())
 			System.out.println("TestReturnObjectImpl-Failed: hasError()==True on valid return object");
 		if(roVal.getError()!=ErrorMessage.NO_ERROR)
@@ -15,7 +16,7 @@ class TestReturnObjectImpl {
 			System.out.println("TestReturnObjectImpl-Failed: getError() wrong error returned on error");
 		if(roErr.getReturnValue()!=null)
 			System.out.println("TestReturnObjectImpl-Failed: getReturnValue() is not null on error");
-		
+        System.out.println("Finished tests for ReturnObjectImpl");
 		
 	}
 	
