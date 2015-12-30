@@ -30,9 +30,15 @@ class TestArrayListImpl {
         if(testArray.size()!= 1000001)
             System.out.println("TestArrayListImpl-Failed: size()!=1000001 after adding element that expands list beyond default capacity");
         //System.out.println("Number of elements in array are: " + testArray.size());
-        if(testArray.get(0).getReturnValue() != "Hello," && testArray.get(500000).getReturnValue() != "Element:500000" && testArray.get(testArray.size()).getReturnValue() != "Will I fit?")
-            System.out.println(testArray.get(500000).getReturnValue());    
-            System.out.println("TestArrayListImpl-Failed: get() not re11turning first, middle and last elements correctly");
+        if(!testArray.get(0).getReturnValue().equals("Hello,") || !testArray.get(500000).getReturnValue().equals("Element:500000") || !testArray.get(testArray.size()-1).getReturnValue().equals("Will I fit?"))
+            /*System.out.println("First element:" + testArray.get( 0 ).getReturnValue().equals("Hello,"));
+            System.out.println("Middle element:" + testArray.get( 500000 ).getReturnValue().equals("Element:500000"));
+            System.out.println("Last element:" + testArray.get(testArray.size()-1).getReturnValue().equals("Will I fit?"));*/
+                
+            System.out.println("TestArrayListImpl-Failed: get() not returning first, middle and last elements correctly");
+        ReturnObjectImpl errRoiOutOfBounds = testArray.get(-1); 
+        ReturnObjectImpl errRoiOutOfBounds2 = testArray.get(testArray.size());
+        if (errRoiOutOfBounds.getError() != ErrorMessage.INDEX_OUT_OF_BOUNDS && errRoiOutOfBounds2.getError() != ErrorMessage.INDEX_OUT_OF_BOUNDS   )
+            System.out.println("TestArrayListImpl-Failed: get(-1) or get(2000001) did not return an error message");
     }
-
 }
