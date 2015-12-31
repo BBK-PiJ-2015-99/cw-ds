@@ -1,6 +1,6 @@
-class TestArrayListImpl {
+class TestListImpl {
     public static void main(String[] input){
-        ArrayListImpl testArray = new ArrayListImpl();
+        LinkedListImpl testArray = new LinkedListImpl();
         System.out.println("Starting tests for TestArrayListImpl");
         if(!testArray.isEmpty())
             System.out.println("TestArrayListImpl-Failed: !.isEmpty() returned true after object creation");
@@ -19,24 +19,40 @@ class TestArrayListImpl {
         ReturnObjectImpl nullRetObj = testArray.add("Lionel Richie");
         if(nullRetObj!=null)
             System.out.println("TestArrayListImpl-Failed: nullRetObj!=null  when valid argument was supplied");
-        int counter = 1000000-4;
+        //int counter = 1000000-4;
+        int counter = 10-4;
         //fill array up to initial capacity
         while (counter>0){
             testArray.add("Element:" + counter);
             counter-= 1;
         }
+        
         testArray.add("Will I fit?");
+        /*
+        System.out.println(testArray.get(0).getReturnValue());
+        System.out.println(testArray.get(1).getReturnValue());
+        System.out.println(testArray.get(2).getReturnValue());
+        System.out.println(testArray.get(3).getReturnValue());
+        */
         if(testArray.size()!= 1000001)
             System.out.println("TestArrayListImpl-Failed: size()!=1000001 after adding element that expands list beyond default capacity");
-        //System.out.println("Number of elements in array are: " + testArray.size());
+        System.out.println("Number of elements in array are: " + testArray.size());
+        System.out.println("---->" + testArray.get(0).getReturnValue());
+        System.out.println("---->" + testArray.get(1).getReturnValue());
+        System.out.println("---->" + testArray.get(2).getReturnValue());
         if(!testArray.get(0).getReturnValue().equals("Hello,") || !testArray.get(500000).getReturnValue().equals("Element:500000") || !testArray.get(testArray.size()-1).getReturnValue().equals("Will I fit?"))
-            /*System.out.println("First element:" + testArray.get( 0 ).getReturnValue().equals("Hello,"));
+            System.out.println("First element:" + testArray.get( 0 ).getReturnValue().equals("Hello,"));
             System.out.println("Middle element:" + testArray.get( 500000 ).getReturnValue().equals("Element:500000"));
-            System.out.println("Last element:" + testArray.get(testArray.size()-1).getReturnValue().equals("Will I fit?"));*/
+            //System.out.println("Last element:" + testArray.get(testArray.size()-1).getReturnValue().equals("Will I fit?"));
                 
+            System.out.println("First element:" + testArray.get( 0 ).getReturnValue());
+            System.out.println("Middle element:" + testArray.get( 500000 ).getReturnValue());
+            System.out.println("Last element:" + testArray.get(testArray.size()-1).getReturnValue());
+
             System.out.println("TestArrayListImpl-Failed: get() not returning first, middle and last elements correctly");
         ReturnObjectImpl errRoiOutOfBounds = testArray.get(-1); 
         ReturnObjectImpl errRoiOutOfBounds2 = testArray.get(testArray.size());
+        System.out.println("RUNNING HERE");
         if (errRoiOutOfBounds.getError() != ErrorMessage.INDEX_OUT_OF_BOUNDS && errRoiOutOfBounds2.getError() != ErrorMessage.INDEX_OUT_OF_BOUNDS   )
             System.out.println("TestArrayListImpl-Failed: get(-1) or get(2000001) did not return an error message");
         ReturnObjectImpl roiNullIdxAdd = testArray.add(0, "Let me in!");

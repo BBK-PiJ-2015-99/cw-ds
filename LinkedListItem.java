@@ -7,10 +7,12 @@ class LinkedListItem {
         this.valueStore = value;    
     }
     
+    public Object getValue(){
+        return this.valueStore;
+    }    
     public LinkedListItem getNextItem(){
         return this.nextItem;
     }
-
     public void setNextItem(LinkedListItem nextItem){
         this.nextItem = nextItem;
     }
