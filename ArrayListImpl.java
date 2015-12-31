@@ -34,8 +34,20 @@ class ArrayListImpl implements List{
         return roi;
     }
 
-    public ReturnObject remove(int index){
-        ReturnObjectImpl roi = new ReturnObjectImpl("I'M A DUMMY - IMPLEMENT ME!");
+    public ReturnObjectImpl remove(int index){
+        if (index < 0 || index >= this.internalArrayCount ){
+            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            return roi;
+        }
+        ReturnObjectImpl roi = new ReturnObjectImpl(this.internalArray[index]);
+        this.internalArray[index] = null;
+        //shift all entries one to the left if the entry to be removed isn't the last one
+        if(index != this.internalArrayCount-1){
+            for(int i = index; i < this.internalArrayCount-1; i++){
+                 this.internalArray[i] = this.internalArray[i+1];    
+            }  
+        }
+        this.internalArrayCount --;
         return roi;
     }
 
@@ -80,10 +92,12 @@ class ArrayListImpl implements List{
         if(this.internalArrayCount - this.internalArrayCapacity < 1  )
             this.increaseCapacity();
        
-        //now that there is enough space. Shift all items at the insert position up by one
+        //now that there is enough space. Shift all items, starting at the last one, up by one
         for(int i=this.internalArrayCount-1; i>=index; i--){
-            
+            this.internalArray[i+1] = this.internalArray[i]; 
         }
+        this.internalArray[index] = item;
+        this.internalArrayCount++;
         return null;
     }            
 }    
