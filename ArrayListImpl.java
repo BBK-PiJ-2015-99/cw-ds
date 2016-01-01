@@ -31,6 +31,7 @@ class ArrayListImpl implements List{
         }
 
         ReturnObject roi = new ReturnObjectImpl(this.internalArray[index]);
+        //System.out.println(this.internalArray[index]);
         return roi;
     }
 
