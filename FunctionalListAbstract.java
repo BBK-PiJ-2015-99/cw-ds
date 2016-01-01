@@ -11,7 +11,7 @@ public class FunctionalListAbstract  {
     public FunctionalList  internalRest(FunctionalList list, FunctionalList newList){
         for(int i=1; i<=list.size()-1 ; i++){
             //System.out.println(this.get(i).getReturnValue());
-            list.add(newList.get(i).getReturnValue());
+            newList.add(list.get(i).getReturnValue());
         }
         return newList;
     }
