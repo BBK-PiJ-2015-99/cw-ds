@@ -23,14 +23,14 @@ class ArrayListImpl implements List{
     }
 
     
-    public ReturnObjectImpl get(int index){
+    public ReturnObject get(int index){
         //System.out.println(index + "---" + this.internalArrayCount);
         if (index < 0 || index >= this.internalArrayCount ){
             ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
 
-        ReturnObjectImpl roi = new ReturnObjectImpl(this.internalArray[index]);
+        ReturnObject roi = new ReturnObjectImpl(this.internalArray[index]);
         return roi;
     }
 
