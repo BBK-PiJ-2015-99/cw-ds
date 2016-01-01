@@ -1,6 +1,6 @@
 class TestFunctionalListImpl {
     public static void main(String[] input){
-        FunctionalList  testFunctionalList = new FunctionalArrayListImpl();
+        FunctionalList  testFunctionalList = new FunctionalLinkedListImpl();
         System.out.println("Starting tests - FunctionalListImpl");
         testFunctionalList.add("1-SimpleChronograph");
         testFunctionalList.add("2-CounterChronograph");
