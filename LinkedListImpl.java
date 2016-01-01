@@ -33,13 +33,67 @@ class LinkedListImpl implements List {
     }
 
     public ReturnObjectImpl remove(int index){
-        ReturnObjectImpl roi = new ReturnObjectImpl("TODO - IMPLEMENT ME");
-        return roi;
+        if (index < 0 || index >= this.listCount ){
+            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            return roi;
+        }
+        LinkedListItem pointer = this.listStart;
+        if(index != 0) {
+            LinkedListItem nextItemPointer = pointer.getNextItem();
+            for(int i = 1; i < index; i++){
+                //System.out.println("-->" + pointer.getValue());
+                pointer = pointer.getNextItem();    
+                nextItemPointer = pointer.getNextItem();
+            }
+            //if for loop finished/didn't run then nextItemPointer is the item to remove
+            if(nextItemPointer.getNextItem() != null){
+                pointer.setNextItem(nextItemPointer.getNextItem() );
+            }else{
+                pointer.setNextItem(null);
+            }
+        }else{
+            pointer = pointer.getNextItem();
+            this.listStart = pointer;
+        } 
+        this.listCount--;
+        return null;
     }
 
     public ReturnObjectImpl add(int index, Object item){
-        ReturnObjectImpl roi = new ReturnObjectImpl("TODO - IMPLEMENT ME");
-        return roi;
+        if (index < 0 || index >= this.listCount ){
+            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            return roi;
+        }
+        if (item == null) {
+            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+            return roi;
+        }
+        LinkedListItem newItem = new LinkedListItem(item);
+        LinkedListItem pointer = this.listStart;
+
+        if(pointer.getNextItem() != null){
+            LinkedListItem nextItemPointer = pointer.getNextItem();
+        }
+        if(index != 0) {
+            LinkedListItem nextItemPointer = pointer.getNextItem();
+            for(int i = 1; i < index; i++){
+                pointer = pointer.getNextItem();    
+                nextItemPointer = pointer.getNextItem();
+            }
+            //if for loop finished/didn't run then nextItemPointer is the item to remove
+            if(nextItemPointer.getNextItem() != null){
+                //If the element to be removed (nextItemPointer) points at another element get that reference and make next of newItem
+                LinkedListItem nextNextItemPointer = pointer.setNextItem(nextItemPointer.getNextItem() );
+                nextItem.setNextItem(nextNextItemPointer);
+            }
+            pointer.setNextItem(nextItem);
+        }else{
+            //if new item is to be inserted at index 0 then pointer will already be set to head
+            newItem.setNextItem(pointer);
+            this.listStart = newItem;
+        } 
+        this.listCount++=;
+        return null;
     }
 
     public ReturnObjectImpl add(Object item){
