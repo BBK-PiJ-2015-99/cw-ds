@@ -38,6 +38,7 @@ class LinkedListImpl implements List {
             return roi;
         }
         LinkedListItem pointer = this.listStart;
+        LinkedListItem returnDeletedItem;
         if(index != 0) {
             LinkedListItem nextItemPointer = pointer.getNextItem();
             for(int i = 1; i < index; i++){
@@ -46,17 +47,20 @@ class LinkedListImpl implements List {
                 nextItemPointer = pointer.getNextItem();
             }
             //if for loop finished/didn't run then nextItemPointer is the item to remove
+            returnDeletedItem = nextItemPointer;
             if(nextItemPointer.getNextItem() != null){
                 pointer.setNextItem(nextItemPointer.getNextItem() );
             }else{
                 pointer.setNextItem(null);
             }
         }else{
+            returnDeletedItem = pointer;
             pointer = pointer.getNextItem();
             this.listStart = pointer;
         } 
         this.listCount--;
-        return null;
+        ReturnObjectImpl roi = new ReturnObjectImpl(returnDeletedItem.getValue());
+        return roi;
     }
 
     public ReturnObjectImpl add(int index, Object item){
@@ -69,6 +73,10 @@ class LinkedListImpl implements List {
             return roi;
         }
         LinkedListItem newItem = new LinkedListItem(item);
+        /*System.out.println("item" + item);
+        System.out.println("index" + index);
+        System.out.println("index" + this.listStart);
+        */
         LinkedListItem pointer = this.listStart;
 
         if(pointer.getNextItem() != null){
@@ -83,16 +91,16 @@ class LinkedListImpl implements List {
             //if for loop finished/didn't run then nextItemPointer is the item to remove
             if(nextItemPointer.getNextItem() != null){
                 //If the element to be removed (nextItemPointer) points at another element get that reference and make next of newItem
-                LinkedListItem nextNextItemPointer = pointer.setNextItem(nextItemPointer.getNextItem() );
-                nextItem.setNextItem(nextNextItemPointer);
+                LinkedListItem nextNextItemPointer = nextItemPointer.getNextItem();
+                newItem.setNextItem(nextNextItemPointer);
             }
-            pointer.setNextItem(nextItem);
+            pointer.setNextItem(newItem);
         }else{
             //if new item is to be inserted at index 0 then pointer will already be set to head
             newItem.setNextItem(pointer);
             this.listStart = newItem;
         } 
-        this.listCount++=;
+        this.listCount++;
         return null;
     }
 

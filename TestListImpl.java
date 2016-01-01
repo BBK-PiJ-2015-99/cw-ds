@@ -1,6 +1,6 @@
 class TestListImpl {
     public static void main(String[] input){
-        LinkedListImpl testArray = new LinkedListImpl();
+        ArrayListImpl testArray = new ArrayListImpl();
         System.out.println("Starting tests for TestArrayListImpl");
         if(!testArray.isEmpty())
             System.out.println("TestArrayListImpl-Failed: !.isEmpty() returned true after object creation");
@@ -50,7 +50,6 @@ class TestListImpl {
 */
         ReturnObjectImpl errRoiOutOfBounds = testArray.get(-1); 
         ReturnObjectImpl errRoiOutOfBounds2 = testArray.get(testArray.size());
-        System.out.println("RUNNING HERE");
         if (errRoiOutOfBounds.getError() != ErrorMessage.INDEX_OUT_OF_BOUNDS && errRoiOutOfBounds2.getError() != ErrorMessage.INDEX_OUT_OF_BOUNDS   )
             System.out.println("TestArrayListImpl-Failed: get(-1) or get(2000001) did not return an error message");
         ReturnObjectImpl roiNullIdxAdd = testArray.add(0, "Let me in!");
