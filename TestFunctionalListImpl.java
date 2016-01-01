@@ -14,7 +14,6 @@ class TestFunctionalListImpl {
 
         headItem = newList.head();
         newList = newList.rest();
-
         if(!headItem.getReturnValue().equals("2-CounterChronograph") || newList.size() != 2)
             System.out.println("FunctionalArrayListImpl-Failed- 2nd head() and rest() failed");
         System.out.println("Finished tests - FunctionalListImpl");

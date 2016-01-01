@@ -1,8 +1,8 @@
 class LinkedListImpl implements List {
 
     private LinkedListItem listEnd;
-    private LinkedListItem listStart;
-    private int listCount = 0;
+    public LinkedListItem listStart;
+    public int listCount = 0;
 
     public boolean isEmpty(){
      if (this.listCount == 0)
