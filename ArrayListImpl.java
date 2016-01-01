@@ -1,9 +1,9 @@
 class ArrayListImpl implements List{
 	
-	private Object[] internalArray;
-	private int internalArrayCount;
+	public Object[] internalArray;
+	public int internalArrayCount;
 	public static final int ARRAY_SIZE_START  = 1000000;
-	private int internalArrayCapacity;
+	public int internalArrayCapacity;
     
 	public ArrayListImpl(){
 		this.internalArray = new Object[this.ARRAY_SIZE_START];
