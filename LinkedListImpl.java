@@ -3,21 +3,18 @@ class LinkedListImpl implements List {
     private LinkedListItem listEnd;
     public LinkedListItem listStart;
     public int listCount = 0;
-
+    
     public boolean isEmpty(){
-     if (this.listCount == 0)
-            return true;
-        else
-            return false;
+        return this.listCount == 0;
     }
 
     public int size(){
         return this.listCount;
     }
 
-    public ReturnObjectImpl get(int index){
+    public ReturnObject get(int index){
         if (index < 0 || index >= this.listCount ){
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
         
@@ -28,13 +25,13 @@ class LinkedListImpl implements List {
                 pointer = pointer.getNextItem();    
             }
         } 
-        ReturnObjectImpl roi = new ReturnObjectImpl(pointer.getValue());
+        ReturnObject roi = new ReturnObjectImpl(pointer.getValue());
         return roi;
     }
 
-    public ReturnObjectImpl remove(int index){
+    public ReturnObject remove(int index){
         if (index < 0 || index >= this.listCount ){
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
         LinkedListItem pointer = this.listStart;
@@ -63,7 +60,7 @@ class LinkedListImpl implements List {
         return roi;
     }
 
-    public ReturnObjectImpl add(int index, Object item){
+    public ReturnObject add(int index, Object item){
         if (index < 0 || index >= this.listCount ){
             ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
@@ -104,9 +101,9 @@ class LinkedListImpl implements List {
         return null;
     }
 
-    public ReturnObjectImpl add(Object item){
+    public ReturnObject add(Object item){
         if (item == null) {
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
             return roi;
         }
         //System.out.println("Creating" + item);

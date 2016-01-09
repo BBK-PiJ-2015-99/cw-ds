@@ -10,12 +10,8 @@ class ArrayListImpl implements List{
 		this.internalArrayCount = 0;
         this.internalArrayCapacity = this.ARRAY_SIZE_START;
 	}
-
     public boolean isEmpty(){
-        if(this.internalArrayCount == 0)
-            return true;
-        else
-             return false;
+        return this.internalArrayCount == 0;
     }
 
     public int size(){
@@ -35,12 +31,12 @@ class ArrayListImpl implements List{
         return roi;
     }
 
-    public ReturnObjectImpl remove(int index){
+    public ReturnObject remove(int index){
         if (index < 0 || index >= this.internalArrayCount ){
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
-        ReturnObjectImpl roi = new ReturnObjectImpl(this.internalArray[index]);
+        ReturnObject roi = new ReturnObjectImpl(this.internalArray[index]);
         this.internalArray[index] = null;
         //shift all entries one to the left if the entry to be removed isn't the last one
         if(index != this.internalArrayCount-1){
@@ -52,9 +48,9 @@ class ArrayListImpl implements List{
         return roi;
     }
 
-   public ReturnObjectImpl add(Object item){
+   public ReturnObject add(Object item){
         if (item == null) {
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
             return roi;
         }else{
            if(this.internalArrayCapacity==this.internalArrayCount){
@@ -76,13 +72,13 @@ class ArrayListImpl implements List{
         this.internalArray = newInternalArray;
     }
 
-    public ReturnObjectImpl add(int index, Object item){
+    public ReturnObject add(int index, Object item){
         if (item == null) {
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
             return roi;
         }
         if (index < 0 || index >= this.internalArrayCount ){
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
         if(index == this.internalArrayCount-1){
