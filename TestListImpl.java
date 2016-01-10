@@ -66,7 +66,7 @@ class TestListImpl {
              //System.out.println("Middle element:" + testList.get( 500001 ).getReturnValue());
              //System.out.println("Last element:" + testList.get(testList.size()-1).getReturnValue());
              //System.out.println("List Size:" +testList.size());
-       if(roiNullIdxAdd != null)
+       if(roiNullIdxAdd.getReturnValue() != null)
               System.out.println("TestArrayListImpl-Failed: roiNullIdxAdd != null - inserting with index did not return null"); 
         int sizeBeforeRemoving = testList.size();
         ReturnObject roiRemoveLast = testList.remove(testList.size()-1);

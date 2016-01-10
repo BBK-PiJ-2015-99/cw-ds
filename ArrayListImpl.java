@@ -67,7 +67,8 @@ class ArrayListImpl implements List{
            this.internalArrayCount+=1;
             
         } 
-        return null;
+        ReturnObject roi = new ReturnObjectImpl(null);
+        return roi;
    }
    
     private void increaseCapacity(){

@@ -17,7 +17,10 @@ class LinkedListImpl implements List {
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
-        
+        if(this.size()==0){
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+            return roi;
+        }      
         LinkedListItem pointer = this.listStart;
         if(index != 0) {
             for(int i = 0; i < index; i++){
@@ -34,12 +37,15 @@ class LinkedListImpl implements List {
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
+        if(this.size()==0){
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+            return roi;
+        }      
         LinkedListItem pointer = this.listStart;
         LinkedListItem returnDeletedItem;
         if(index != 0) {
             LinkedListItem nextItemPointer = pointer.getNextItem();
             for(int i = 1; i < index; i++){
-                //System.out.println("-->" + pointer.getValue());
                 pointer = pointer.getNextItem();    
                 nextItemPointer = pointer.getNextItem();
             }
@@ -65,15 +71,15 @@ class LinkedListImpl implements List {
             ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
+        if(this.size()==0){
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+            return roi;
+        }      
         if (item == null) {
             ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
             return roi;
         }
         LinkedListItem newItem = new LinkedListItem(item);
-        /*System.out.println("item" + item);
-        System.out.println("index" + index);
-        System.out.println("index" + this.listStart);
-        */
         LinkedListItem pointer = this.listStart;
 
         if(pointer.getNextItem() != null){
@@ -98,7 +104,8 @@ class LinkedListImpl implements List {
             this.listStart = newItem;
         } 
         this.listCount++;
-        return null;
+        ReturnObject roi = new ReturnObjectImpl(null);
+        return roi;
     }
 
     public ReturnObject add(Object item){
@@ -106,7 +113,6 @@ class LinkedListImpl implements List {
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
             return roi;
         }
-        //System.out.println("Creating" + item);
         if (this.isEmpty()){
             LinkedListItem newListItem = new LinkedListItem(item);        
             this.listStart = newListItem;
@@ -115,18 +121,9 @@ class LinkedListImpl implements List {
             LinkedListItem newListItem = new LinkedListItem(item);
             this.listEnd.setNextItem(newListItem);
             this.listEnd = newListItem;
-
-            /*
-            LinkedListItem pointer = this.listStart;
-              System.out.println(pointer.getValue());
-            while(pointer.getNextItem() != null){
-                 System.out.print("-->" + pointer.getNextItem().getValue());
-                 pointer = pointer.getNextItem();
-            }
-            System.out.println("===================");
-        */
         }
         this.listCount += 1;
-        return null;
+        ReturnObject roi = new ReturnObjectImpl(null);
+        return roi;
     }
 }
