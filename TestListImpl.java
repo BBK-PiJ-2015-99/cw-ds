@@ -9,8 +9,8 @@ class TestListImpl {
     }
 
     private static void runTests(List testList){
-        if(!testList.isEmpty())
-            System.out.println("TestArrayListImpl-Failed: !.isEmpty() returned true after object creation");
+        if(!testList.isEmpty() || !(testList.get(0).getError()!= ErrorMessage.EMPTY_STRUCTURE))
+            System.out.println("TestArrayListImpl-Failed: !.isEmpty() returned true after object creation  - or wrong error on get");
         if(testList.size()!=0)
             System.out.println("TestArrayListImpl-Failed: size()!=0 after object creation");
         testList.add("Hello,");
@@ -24,7 +24,7 @@ class TestListImpl {
         if(errRetObj.getError()!=ErrorMessage.INVALID_ARGUMENT)
             System.out.println("TestArrayListImpl-Failed: getError()!=ErrorMessage.INVALID_ARGUMENT when invalid argument was supplied");
         ReturnObject nullRetObj = testList.add("Lionel Richie");
-        if(nullRetObj!=null)
+        if(nullRetObj.getReturnValue()!=null)
             System.out.println("TestArrayListImpl-Failed: nullRetObj!=null  when valid argument was supplied");
         int counter = 1000000-4;
         //int counter = 10-4;

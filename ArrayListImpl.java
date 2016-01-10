@@ -17,12 +17,14 @@ class ArrayListImpl implements List{
     public int size(){
         return this.internalArrayCount;
     }
-
-    
     public ReturnObject get(int index){
         //System.out.println(index + "---" + this.internalArrayCount);
         if (index < 0 || index >= this.internalArrayCount ){
-            ReturnObjectImpl roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+            return roi;
+        }
+        if (this.size()==0){
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
             return roi;
         }
 
@@ -36,10 +38,15 @@ class ArrayListImpl implements List{
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
+        if (this.size()==0){
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+            return roi;
+        }
         ReturnObject roi = new ReturnObjectImpl(this.internalArray[index]);
         this.internalArray[index] = null;
         //shift all entries one to the left if the entry to be removed isn't the last one
         if(index != this.internalArrayCount-1){
+            // stop at this.internalArrayCount-1 because we go to i+1
             for(int i = index; i < this.internalArrayCount-1; i++){
                  this.internalArray[i] = this.internalArray[i+1];    
             }  
@@ -81,6 +88,10 @@ class ArrayListImpl implements List{
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
         }
+        if (this.size()==0){
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+            return roi;
+        }
         if(index == this.internalArrayCount-1){
             this.add(item);
         }
@@ -95,7 +106,8 @@ class ArrayListImpl implements List{
         }
         this.internalArray[index] = item;
         this.internalArrayCount++;
-        return null;
+        ReturnObject roi = new ReturnObjectImpl(null);
+        return roi;
     }            
 }    
 	
