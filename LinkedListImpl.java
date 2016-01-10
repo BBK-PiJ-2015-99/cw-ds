@@ -63,7 +63,6 @@ class LinkedListImpl implements List {
         LinkedListItem pointer = this.listStart;
         if(index != 0) {
             for(int i = 0; i < index; i++){
-                //System.out.println("-->" + pointer.getValue());
                 pointer = pointer.getNextItem();    
             }
         } 
@@ -154,12 +153,12 @@ class LinkedListImpl implements List {
         }
         if(index != 0) {
             LinkedListItem nextItemPointer = pointer.getNextItem();
-            for(int i = 1; i < index; i++){
+            for(int i = 1; i <= index; i++){
                 pointer = pointer.getNextItem();    
                 nextItemPointer = pointer.getNextItem();
             }
             //if for loop finished/didn't run then nextItemPointer is the item to remove
-            if(nextItemPointer.getNextItem() != null){
+            if(nextItemPointer != null){
                 //If the element to be removed (nextItemPointer) points at another element get that reference and make next of newItem
                 LinkedListItem nextNextItemPointer = nextItemPointer.getNextItem();
                 newItem.setNextItem(nextNextItemPointer);

@@ -40,6 +40,33 @@ class TestImprovedStackImpl {
 
         if(  !(r1.getReturnValue().equals("i2") && r2.getReturnValue().equals("i3") ))
             System.out.println("TestStackImp-Failed-reverse() not working correctly");
+
+
+        ImprovedStack si_reverse = new ImprovedStackImpl(new LinkedListImpl());
+        //check if reversing empty list causes an exceptio
+        si_reverse.reverse();
+        si_reverse.push("i1");
+        si_reverse.reverse();
+
+        //Test removing from the end and "middle"
+        si_reverse.push("START");
+        si_reverse.push("MIDDLE");
+        si_reverse.push("END");
+        si_reverse.push("OUTLIER");
+        si_reverse.remove("END");
+        si_reverse.remove("OUTLIER");
+
+        if(!(si_reverse.size()==3) ||  si_reverse.pop().getReturnValue().equals("END") || si_reverse.pop().getReturnValue().equals("MIDDLE"))
+             System.out.println("TestStackImpl - removing from end or middle does not work");
+
+             System.out.println("-------");
+        for(int i=0; i<10; i++){
+            si_reverse.push("Dummy"+i);
+        }
+        System.out.println("Starting reversing a 10k itesm");
+        si_reverse.reverse();
+        System.out.println("Finished reversing a 10k items");
         System.out.println("Finished TestImprovedStackImpl"); 
+
     }
 }

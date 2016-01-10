@@ -58,7 +58,6 @@ class ArrayListImpl implements List{
      *         encapsulated in a ReturnObject
      */
     public ReturnObject get(int index){
-        //System.out.println(index + "---" + this.internalArrayCount);
         if (index < 0 || index >= this.internalArrayCount ){
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
             return roi;
@@ -69,7 +68,6 @@ class ArrayListImpl implements List{
         }
 
         ReturnObject roi = new ReturnObjectImpl(this.internalArray[index]);
-        //System.out.println(this.internalArray[index]);
         return roi;
     }
     /**

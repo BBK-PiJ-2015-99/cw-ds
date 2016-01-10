@@ -78,7 +78,18 @@ class TestListImpl {
         if(!roiRemoveFirst.getReturnValue().equals("Let me in!") || !roiRemoveMiddle.getReturnValue().equals("Element:500000") || !roiRemoveLast.getReturnValue().equals("Will I fit?") || !(testList.size() == sizeBeforeRemoving  - 3 ) )
               System.out.println("TestArrayListImpl-Failed: items returned BY remove were not as expected");  
 
-        
+       //test add and remove at last position
+       testList.add(testList.size()-1, "VALUE TO ADD");
+       if(testList.get(testList.size()-1).getReturnValue()!="VALUE TO ADD"){
+            System.out.println("TestList - adding to last posiiton does not work");
+            System.out.println("CURRENTLY THE LAST VALUE IS:" + testList.get(testList.size()-1).getReturnValue());
+       }
+       testList.remove(testList.size()-1);
+       //System.out.println("-->CURRENTLY THE LAST VALUE IS:" + testList.get(testList.size()-1).getReturnValue());
+       if(!testList.get(testList.size()-1).getReturnValue().equals("Element:1")){
+            System.out.println("TestList - removing from last posiiton does not work work");
+            System.out.println("CURRENTLY THE LAST VALUE IS:" + testList.get(testList.size()-1).getReturnValue());
+       }
     }
 }
 
