@@ -1,7 +1,19 @@
 class TestStackImpl {
     public static void main(String[] args){
+        
+        Stack si_null_list = new StackImpl(null);
+        System.out.println("Running here");
+        boolean noException=true;
+        try {
+            si_null_list.pop(); 
+        } catch (NullPointerException e){
+             noException=false;
+        }
+        if(noException){
+            System.out.println("TestStackImpl - no exception when operating on Stack with null list");
+        }
         StackImpl si = new StackImpl(new LinkedListImpl());
-
+        
         si.push("1");
         si.push("2");
         si.push("3");
@@ -24,6 +36,8 @@ class TestStackImpl {
             System.out.println("TestStackImp-Failed- pop() on empty list doesn't produce an error or error isn't correct");
             System.out.println(r2.getError());
         }
+        r1 = si.top();
+        System.out.println(r1.getError());
         System.out.println("Finished TestStackImpl"); 
 
     }

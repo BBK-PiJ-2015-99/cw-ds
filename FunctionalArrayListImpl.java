@@ -1,15 +1,33 @@
 public class FunctionalArrayListImpl extends ArrayListImpl implements FunctionalList {
-
+    /*
+     * Most of the functionality in FunctionalList is common to both types of list, except returning a new list in rest. 
+     * So the implementation specific functional lists are responsible for creating new lists of its own kind and dispatch
+     * all common functionality to FunctionalListAbstract, which they can access through composition. 
+     */
     private FunctionalListAbstract fla = new FunctionalListAbstract();
     
+    /**
+     * Returns the element at the beginning of the list. 
+     * 
+     * If the list is empty, an appropriate error is returned. 
+     *
+     * @return a copy of the element at the beginning of the list or 
+     *         an error if the list is empty.
+     */
+    public ReturnObject head(){
+        ReturnObject roi = this.fla.internalHead(this);
+        return roi;
+    }
+    /**
+     * Returns a list with the elements in this list except the
+     * head. The elements must be in the same order. The original list
+     * must not change or be affected by changes in the new list. 
+     * 
+     * If the list is empty, another empty list is returned. 
+     */
     public FunctionalList rest(){
         FunctionalList newList = new FunctionalArrayListImpl();
         this.fla.internalRest(this, newList);
         return newList;
     }    
-    public ReturnObject head(){
-        ReturnObject roi = this.fla.internalHead(this);
-        return roi;
-    }
-    
 }

@@ -2,6 +2,7 @@ public class TestSampleableListImpl {
     public static void main(String[] args){
         System.out.println("Starting tests for SampleableListImpl");
         SampleableList sli = new SampleableListImpl();
+        SampleableList sliEmpty = sli.sample();
         sli.add("Item1");
         sli.add("Item2");
         sli.add("Item3");

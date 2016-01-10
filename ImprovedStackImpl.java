@@ -26,8 +26,8 @@ public class ImprovedStackImpl implements ImprovedStack{
 	 * 
 	 * @return a copy of this stack with the items reversed. 
 	 */
-	public ImprovedStackImpl reverse(){
-        ImprovedStackImpl newList = new ImprovedStackImpl(new LinkedListImpl());
+	public ImprovedStack reverse(){
+        ImprovedStack newList = new ImprovedStackImpl(new LinkedListImpl());
         for(int i =this.size()-1;i>=0; i-- ){
             newList.push(this.internalList.get(i).getReturnValue());
         }
@@ -49,19 +49,48 @@ public class ImprovedStackImpl implements ImprovedStack{
             }
         }
     }
+    /**
+     * Returns true if the stack is empty, false otherwise. 
+     * 
+     * @return true if the stack is empty, false otherwise. 
+     */
     public boolean isEmpty(){
         return this.internalList.isEmpty();
     }
+    /**
+     * Returns the number of items currently in the stack.
+     * 
+     * @return the number of items currently in the stack
+     */
     public int size(){
         return this.internalList.size();
     }   
+    /**
+     * Adds an element at the top of the stack. 
+     * 
+     * @param item the new item to be added
+     */
     public void push(Object item){
         this.internalList.add(item);
     }
+    /**
+     * Returns the element at the top of the stack. The stack is
+     * left unchanged.
+     * 
+     * @return If stack is not empty, the item on the top is returned. If the
+     *         stack is empty, an appropriate error.
+     */
     public ReturnObject top(){
         ReturnObject  roi = this.internalList.get(this.internalList.size()-1);
         return roi;
     }
+    /**
+     * Returns the element at the top of the stack. The element is
+     * removed frmo the stack.
+     * 
+     * @return If stack is not empty, the item on the top is returned. If the
+     *         stack is empty, an appropriate error.
+     */
     public ReturnObject pop(){
         if (this.size()==0){
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);

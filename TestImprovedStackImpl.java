@@ -1,6 +1,6 @@
 class TestImprovedStackImpl {
     public static void main(String[] args){
-        ImprovedStackImpl si = new ImprovedStackImpl(new LinkedListImpl());
+        ImprovedStack si = new ImprovedStackImpl(new LinkedListImpl());
 
         si.push("1");
         si.push("2");
@@ -34,7 +34,7 @@ class TestImprovedStackImpl {
             System.out.println("Top valuei:" + si.top().getReturnValue());
             System.out.println("TestStackImp-Failed- pop() - Value not removed correclty. ");    
         }
-        ImprovedStackImpl nl = si.reverse();
+        ImprovedStack nl = si.reverse();
         r1 = nl.pop();
         r2 = nl.pop();
 

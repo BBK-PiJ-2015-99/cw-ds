@@ -10,7 +10,7 @@
  * object or an error value of the right kind (as defined in {@see
  * ErrorMessage}).
  * 
- * @author PiJ
+ * @author David Asfaha
  */
 public class StackImpl implements Stack {
     /**
@@ -32,23 +32,53 @@ public class StackImpl implements Stack {
     public StackImpl(List list) {
 	  this.internalList = list;
     }
-
+    /**
+     * Returns true if the stack is empty, false otherwise. 
+     * 
+     * @return true if the stack is empty, false otherwise. 
+     */
     public boolean isEmpty(){
         return this.internalList.isEmpty();
-
     }
+    /**
+     * Returns the number of items currently in the stack.
+     * 
+     * @return the number of items currently in the stack
+     */
     public int size(){
         return this.internalList.size();
     }
-        
+    /**
+     * Adds an element at the top of the stack. 
+     * 
+     * @param item the new item to be added
+     */    
     public void push(Object item){
         this.internalList.add(item);
     }
-
+    /**
+     * Returns the element at the top of the stack. The stack is
+     * left unchanged.
+     * 
+     * @return If stack is not empty, the item on the top is returned. If the
+     *         stack is empty, an appropriate error.
+     */
     public ReturnObject top(){
+        //top() on an empty stack would give a index out of bounds error, however I believe an empty structure error is clearer 
+        if (this.size()==0){
+            ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+            return roi;
+        }
         ReturnObject  roi = this.internalList.get(this.internalList.size()-1);
         return roi;
     }
+    /**
+     * Returns the element at the top of the stack. The element is
+     * removed frmo the stack.
+     * 
+     * @return If stack is not empty, the item on the top is returned. If the
+     *         stack is empty, an appropriate error.
+     */
     public ReturnObject pop(){
         if (this.size()==0){
             ReturnObject roi = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
