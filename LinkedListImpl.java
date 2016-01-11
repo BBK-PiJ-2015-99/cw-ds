@@ -63,8 +63,6 @@ class LinkedListImpl implements List {
         LinkedListItem pointer = this.listStart;
         if(index != 0) {
             for(int i = 0; i < index; i++){
-                //System.out.println("Linked List Get Item:" + i + "---" + index + "---" + this.listCount + "--" + pointer.getValue());
-                //System.out.println("Pointer next item" + pointer.getNextItem());
                 pointer = pointer.getNextItem();    
             }
         } 
@@ -106,13 +104,13 @@ class LinkedListImpl implements List {
                 pointer.setNextItem(nextItemPointer.getNextItem() );
             }else{
                 pointer.setNextItem(null);
+                this.listEnd = pointer;
             }
         }else{
             returnDeletedItem = pointer;
             pointer = pointer.getNextItem();
             this.listStart = pointer;
         } 
-        System.out.println("LL Remove--->" + index + returnDeletedItem.getValue());
         this.listCount--;
         ReturnObjectImpl roi = new ReturnObjectImpl(returnDeletedItem.getValue());
         return roi;
@@ -163,14 +161,12 @@ class LinkedListImpl implements List {
             //if for loop finished/didn't run then nextItemPointer is the item to remove
             if(nextItemPointer != null){
                 //If the element to be removed (nextItemPointer) points at another element get that reference and make next of newItem
-                    System.out.println("Inserting at OTHER THAN head: " + newItem.getValue());
                 LinkedListItem nextNextItemPointer = nextItemPointer.getNextItem();
                 newItem.setNextItem(nextNextItemPointer);
             }
             pointer.setNextItem(newItem);
         }else{
             //if new item is to be inserted at index 0 then pointer will already be set to head
-            System.out.println("Inserting at head: " + newItem.getValue());
             newItem.setNextItem(pointer);
             this.listStart = newItem;
         } 
