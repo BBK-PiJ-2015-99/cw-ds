@@ -1,12 +1,23 @@
 class TestImprovedStackImpl {
     public static void main(String[] args){
         ImprovedStack si = new ImprovedStackImpl(new LinkedListImpl());
+        ImprovedStack si_reverse = new ImprovedStackImpl(new LinkedListImpl());
+        System.out.println("Starting TestImprovedStackImpl - with Linked List"); 
+        testImprovedStack(si, si_reverse);
+        System.out.println("Finished TestImprovedStackImpl - with Linked List"); 
 
+        System.out.println("Starting TestImprovedStackImpl - with Array List"); 
+        si = new ImprovedStackImpl(new ArrayListImpl());
+        si_reverse = new ImprovedStackImpl(new ArrayListImpl());
+        testImprovedStack(si, si_reverse);
+        System.out.println("Finished TestImprovedStackImpl - with Array List"); 
+    }
+
+    public static void testImprovedStack(ImprovedStack si, ImprovedStack si_reverse) {
         si.push("1");
         si.push("2");
         si.push("3");
       
-        System.out.println("Starting TestImprovedStackImpl"); 
         if (si.isEmpty() || !(si.size()==3))
             System.out.println("TestStackImpl-Failed- isEmpty() or size() are wrong aftera adding 3 elements");
         
@@ -42,7 +53,7 @@ class TestImprovedStackImpl {
             System.out.println("TestStackImp-Failed-reverse() not working correctly");
 
 
-        ImprovedStack si_reverse = new ImprovedStackImpl(new LinkedListImpl());
+        //ImprovedStack si_reverse = new ImprovedStackImpl(new LinkedListImpl());
         //check if reversing empty list, or a list with a single element causes an exception
         si_reverse.reverse();
         si_reverse.push("i1");
@@ -63,7 +74,6 @@ class TestImprovedStackImpl {
             si_reverse.push("Dummy"+i);
         }
         si_reverse.reverse();
-        System.out.println("Finished TestImprovedStackImpl"); 
 
     }
 }
