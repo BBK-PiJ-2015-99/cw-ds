@@ -59,15 +59,10 @@ class TestImprovedStackImpl {
         if(!(si_reverse.size()==3) ||  si_reverse.pop().getReturnValue().equals("END") || si_reverse.pop().getReturnValue().equals("MIDDLE"))
              System.out.println("TestStackImpl - removing from end or middle does not work");
 
-             System.out.println("-------");
-        System.out.println("Size of Stack:" + si_reverse.size());
         for(int i=0; i<4; i++){
             si_reverse.push("Dummy"+i);
         }
-        System.out.println("Size of Stack:" + si_reverse.size());
-        System.out.println("Starting reversing a 10k itesm");
         si_reverse.reverse();
-        System.out.println("Finished reversing a 10k items");
         System.out.println("Finished TestImprovedStackImpl"); 
 
     }
