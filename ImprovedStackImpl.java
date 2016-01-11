@@ -29,6 +29,8 @@ public class ImprovedStackImpl implements ImprovedStack{
 	public ImprovedStack reverse(){
         ImprovedStack newList = new ImprovedStackImpl(new LinkedListImpl());
         for(int i =this.size()-1;i>=0; i-- ){
+            System.out.println("THIS ---> " + i + "---" + (this.size()-1));
+            System.out.println("THIS ---> " + this.internalList.get(i));
             newList.push(this.internalList.get(i).getReturnValue());
         }
         return newList;

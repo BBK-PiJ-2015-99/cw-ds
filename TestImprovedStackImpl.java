@@ -43,7 +43,7 @@ class TestImprovedStackImpl {
 
 
         ImprovedStack si_reverse = new ImprovedStackImpl(new LinkedListImpl());
-        //check if reversing empty list causes an exceptio
+        //check if reversing empty list, or a list with a single element causes an exception
         si_reverse.reverse();
         si_reverse.push("i1");
         si_reverse.reverse();
@@ -60,9 +60,11 @@ class TestImprovedStackImpl {
              System.out.println("TestStackImpl - removing from end or middle does not work");
 
              System.out.println("-------");
-        for(int i=0; i<10; i++){
+        System.out.println("Size of Stack:" + si_reverse.size());
+        for(int i=0; i<4; i++){
             si_reverse.push("Dummy"+i);
         }
+        System.out.println("Size of Stack:" + si_reverse.size());
         System.out.println("Starting reversing a 10k itesm");
         si_reverse.reverse();
         System.out.println("Finished reversing a 10k items");
